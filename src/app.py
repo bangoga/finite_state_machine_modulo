@@ -1,18 +1,28 @@
-"""App file used as the runner for any finite state machine"""
-from lib.finite_state_machine import FiniteStateMachine
+"""App file used as the runner for any finite state machine. It defines the simulation logic."""
+from src.lib.finite_state_machine import FiniteStateMachine
 
 class App:
-    def __init__(self, input , modulo):
-        self._input = input
-        self._modulo = modulo
-        self.run = []
-        self.finite_state_machine = FiniteStateMachine(input, modulo)
-        
+    def __init__(self, input_str: str, modulo: int):
+        """
+        Initialize the app with a binary input and modulo value.
 
-    def run_simulation(self):
-        """Used to run simulations of a finite state machine"""
+        Args:
+            input_str (str): Binary input string to simulate.
+            modulo (int): Modulo value for the FSM.
+        """
+        self._input = input_str
+        self._modulo = modulo
+        self.finite_state_machine = FiniteStateMachine(input, modulo)
+        self.run = [] # used as path taken during the run. FIFO
+
+    def run_simulation(self) -> int:
+        """
+        Runs the finite state machine simulation based on the input string.
+
+        Returns:
+            int: Final state number after processing the input.
+        """
         input = self._input
-        
         self.run.append(self.finite_state_machine.generated_nodes[0])
 
         while input :
@@ -21,7 +31,6 @@ class App:
 
             if msb == "1":
                 self.run.append(node.next_node)
-
             else:
                 self.run.append(node.previous_node)
             
@@ -30,7 +39,3 @@ class App:
         final_node = self.run.pop()
         print(final_node.number)
         return final_node.number
-
-if __name__ == "__main__":
-    app = App(input="101101011001", modulo = 9)
-    app.run_simulation()

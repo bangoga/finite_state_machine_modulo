@@ -1,7 +1,7 @@
 """
 Machine used to do simulation for modulo
 """
-from lib.node import Node
+from src.lib.node import Node
 class FiniteStateMachine:
 
     def __init__(self, input:str = "1101", modulo:int = 3):
@@ -16,6 +16,7 @@ class FiniteStateMachine:
         self.generated_nodes = []
         state = 0
 
+        # generate nodes with alternating states, node_number is the remainder representation of the node.
         for node_number in range(modulo):
             node = Node(state=state, number = node_number)
             self.generated_nodes.append(node)
@@ -23,8 +24,6 @@ class FiniteStateMachine:
 
         
         # set transition with general formula (Sn * 2 + Xn) % N where N is the modulo
-        # S2 * 2  + 0 
-
         for node_number in range(modulo):
             # if first node, previous node is a loop back
             if node_number == 0:
