@@ -1,0 +1,1 @@
+"""Tests the correctness of the state machine and its linkage established"""
