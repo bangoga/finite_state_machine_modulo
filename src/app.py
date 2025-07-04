@@ -2,7 +2,7 @@
 from lib.finite_state_machine import FiniteStateMachine
 
 class App:
-    def __init__(self, input_str: str, modulo: int):
+    def __init__(self, input_str: str, modulo: int, debug: bool= False):
         """
         Initialize the app with a binary input and modulo value.
 
@@ -12,6 +12,8 @@ class App:
         """
         self._input = input_str
         self._modulo = modulo
+        self._debug  = debug
+
         self.finite_state_machine = FiniteStateMachine(self._modulo)
         self.run = [] # used as path taken during the run. FIFO
 
@@ -39,8 +41,8 @@ class App:
             else:
                 self.run.append(node.node_a)
             
-            print(f"({node.number}) --{msb}-->({self.run[0].number}) ")
+            if self._debug:
+                print(f"({node.number})--{msb}-->({self.run[0].number})")
             
         final_node = self.run.pop()
-        print(final_node.number)
         return final_node.number

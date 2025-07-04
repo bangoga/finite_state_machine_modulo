@@ -22,8 +22,9 @@ def parse_args():
 
 def main():
     args = parse_args()
-    app = App(input_str=args.input, modulo=args.modulo)
-    app.run_simulation()
+    app = App(input_str=args.input, modulo=args.modulo, debug=args.debug)
+    remainder = app.run_simulation()
+    print(remainder)
 
 if __name__ == "__main__":
     main()
