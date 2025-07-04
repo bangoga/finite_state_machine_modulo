@@ -15,4 +15,7 @@ class Node:
     
     def __repr__(self):
         cls = self.__class__.__name__
-        return f"s{self.number} -- (1) -->s{self.next_node.number}\ns{self.number} -- (0) -->s{self.previous_node.number}"
+        node_a = f"s{self.previous_node.number}" if self.previous_node else None
+        node_b = f"s{self.next_node.number}" if self.next_node else None
+
+        return f"Node(number={self.number}, node_a={node_a}, node_b={node_b})"

@@ -25,6 +25,5 @@ def main():
     app = App(input_str=args.input, modulo=args.modulo)
     app.run_simulation()
 
-
 if __name__ == "__main__":
     main()

@@ -12,6 +12,9 @@ class FiniteStateMachine:
             input (str): Binary string representing a number. Default is "1101".
             modulo (int): Modulo base. Default is 3.
         """
+        if modulo < 1:
+            raise ValueError("Modulo needs to be > 0")
+        
         self._input = input
         self.generated_nodes = []
         state = 0

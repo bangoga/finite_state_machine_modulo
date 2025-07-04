@@ -23,6 +23,11 @@ class App:
             int: Final state number after processing the input.
         """
         input = self._input
+
+        # if original input has no binary information return -1
+        if len(input) == 0:
+            return -1
+        
         self.run.append(self.finite_state_machine.generated_nodes[0])
 
         while input :
