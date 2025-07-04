@@ -1,6 +1,6 @@
 """Entry point for the project."""
 import argparse
-from src.app import App
+from app import App
 
 
 def parse_args():

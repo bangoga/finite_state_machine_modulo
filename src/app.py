@@ -1,5 +1,5 @@
 """App file used as the runner for any finite state machine. It defines the simulation logic."""
-from src.lib.finite_state_machine import FiniteStateMachine
+from lib.finite_state_machine import FiniteStateMachine
 
 class App:
     def __init__(self, input_str: str, modulo: int):

@@ -1,7 +1,7 @@
 """
-Machine used to do simulation for modulo
+Class used to create Nodes and form a Finite State Machine through set interactions.
 """
-from src.lib.node import Node
+from lib.node import Node
 class FiniteStateMachine:
 
     def __init__(self, input:str = "1101", modulo:int = 3):
