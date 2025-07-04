@@ -42,7 +42,21 @@ Note:
 
 
 ## How to run
+- To run normal mode:
+`python src/__main__.py -i ""110"" -m 3`
 
+Here i will be the `input`, m will be the `modulo`.
+
+- To run debug mode: 
+`python src/__main__.py -i ""110"" -m 3 -d`
+
+Here `-d` is used to activate debug mode. This will log the flow of the finite state machine
+
+- To run unittests: 
+`pytest src/test`
+
+Make sure if you don't have pytest you run `pip install pytest`
+> Note all runs are made on root folder
 ## Unit tests
 
 All unit tests exist in the `src/tests`. 
@@ -50,3 +64,4 @@ All unit tests exist in the `src/tests`.
 To add new tests for checking logic for setting up interactions and the finite state machine, make changes in `test_state_machine.py`
 
 To add new tests to check the simulation and the logic of the simulation, make changes to `app.py`
+
