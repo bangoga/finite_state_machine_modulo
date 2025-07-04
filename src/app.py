@@ -12,7 +12,7 @@ class App:
         """
         self._input = input_str
         self._modulo = modulo
-        self.finite_state_machine = FiniteStateMachine(input, modulo)
+        self.finite_state_machine = FiniteStateMachine(self._modulo)
         self.run = [] # used as path taken during the run. FIFO
 
     def run_simulation(self) -> int:
@@ -35,9 +35,9 @@ class App:
             node = self.run.pop()
 
             if msb == "1":
-                self.run.append(node.next_node)
+                self.run.append(node.node_b)
             else:
-                self.run.append(node.previous_node)
+                self.run.append(node.node_a)
             
             print(f"({node.number}) --{msb}-->({self.run[0].number}) ")
             

@@ -5,17 +5,17 @@ import pytest
 
 # Input for testing creation of state machine is not relevant.
 @pytest.mark.parametrize(
-    "input, modulo, expected_nodes_len",
+    "modulo, expected_nodes_len",
     [
-        ("10101", 5, 5),
-        ("10101", 3, 3),
-        ("10101", 50, 50),
+        (5, 5),
+        (3, 3),
+        (50, 50),
     ]
 )
 
-def test_fsm_node_generation(input, modulo, expected_nodes_len):
+def test_fsm_node_generation(modulo, expected_nodes_len):
     """Testing expected number of generation of nodes"""
-    fsm = FiniteStateMachine(input=input, modulo=modulo)
+    fsm = FiniteStateMachine(modulo=modulo)
     assert len(fsm.generated_nodes) == expected_nodes_len
 
 
@@ -43,18 +43,18 @@ modulo_1_connections = \
 
 # Input for testing creation of state machine is not relevant.
 @pytest.mark.parametrize(
-    "input, modulo, expected_connections",
+    "modulo, expected_connections",
     [
-        ("10101", 5, modulo_5_connections),
-        ("10101", 3, modulo_3_connections),
-        ("10101", 1, modulo_1_connections),
+        (5, modulo_5_connections),
+        (3, modulo_3_connections),
+        (1, modulo_1_connections),
     ]
 )
 
 
-def test_fsm_relations(input, modulo, expected_connections):
+def test_fsm_relations(modulo, expected_connections):
     """Test if the right relations are formed by FSM thats created"""
-    fsm = FiniteStateMachine(input=input, modulo=modulo)
+    fsm = FiniteStateMachine(modulo=modulo)
 
     for i,node in enumerate(fsm.generated_nodes):
         assert f'{node}' == expected_connections[i] # string repr node equal to expectations
